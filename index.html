@@ -1,0 +1,1432 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Security</title>
+    <link rel="stylesheet" href="css/style.css">
+</head><body><header class="topbar"><div class="logo-area">
+    <h1>NEXUS</h1>
+    <span>SECURITY</span>
+</div>
+
+<div class="system-status">
+    <span class="status-dot"></span>
+    SISTEMA ONLINE
+</div>
+
+</header><div class="layout"><aside class="sidebar"><div class="menu-title">CENTRAL</div>
+
+<button onclick="mostrarPagina('dashboard')">🏠 Dashboard</button>
+<button onclick="mostrarPagina('monitoramento')">📡 Monitoramento</button>
+<button onclick="mostrarPagina('dispositivos')">🖥️ Dispositivos</button>
+<button onclick="mostrarPagina('alertas')">🚨 Alertas</button>
+<button onclick="mostrarPagina('eventos')">📋 Eventos</button>
+<button onclick="mostrarPagina('ia')">🤖 NEXUS AI</button>
+<button onclick="mostrarPagina('relatorios')">📊 Relatórios</button>
+<button onclick="mostrarPagina('usuarios')">👥 Usuários</button>
+<button onclick="mostrarPagina('configuracoes')">⚙️ Configurações</button>
+
+</aside><main class="main"><section id="dashboard" class="page active"><div class="page-header">
+
+    <div>
+        <h2>Dashboard</h2>
+        <p>Visão geral do sistema de segurança.</p>
+    </div>
+
+    <div class="clock" id="clock">00:00:00</div>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div>
+            <span>SISTEMA</span>
+            <strong class="online">ONLINE</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🖥️</div>
+        <div>
+            <span>DISPOSITIVOS</span>
+            <strong id="total-dispositivos">24</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🚨</div>
+        <div>
+            <span>ALERTAS</span>
+            <strong id="dashboard-alertas" class="warning">3</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div>
+            <span>EVENTOS</span>
+            <strong id="eventos-contador">127</strong>
+        </div>
+    </div>
+
+</div>
+
+<div class="content-grid">
+
+    <div class="panel">
+
+        <div class="panel-header">
+            <h3>📡 Monitoramento</h3>
+            <span class="badge online">ATIVO</span>
+        </div>
+
+        <div class="monitor-status">
+
+            <div class="big-status">
+                <span class="status-dot"></span>
+                SISTEMA OPERACIONAL
+            </div>
+
+            <p>
+                Todos os serviços principais
+                estão funcionando normalmente.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-header">
+            <h3>🚨 Alertas recentes</h3>
+            <span class="badge warning" id="dashboard-badge-alertas">
+                3 ATIVOS
+            </span>
+        </div>
+
+        <div class="alert-item">
+            <span class="alert-level high">ALTO</span>
+            <span>Atividade detectada</span>
+        </div>
+
+        <div class="alert-item">
+            <span class="alert-level medium">MÉDIO</span>
+            <span>Dispositivo sem comunicação</span>
+        </div>
+
+        <div class="alert-item">
+            <span class="alert-level low">BAIXO</span>
+            <span>Configuração alterada</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel events-panel">
+
+    <div class="panel-header">
+        <h3>📋 Eventos recentes</h3>
+        <span class="badge">AO VIVO</span>
+    </div>
+
+    <div id="lista-eventos"></div>
+
+</div>
+
+</section><section id="monitoramento" class="page"><div class="page-header">
+
+    <div>
+        <h2>📡 Monitoramento</h2>
+        <p>Monitoramento em tempo real dos sistemas autorizados.</p>
+    </div>
+
+    <div class="badge online">● SISTEMA ATIVO</div>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div>
+            <span>STATUS</span>
+            <strong class="online">ONLINE</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🖥️</div>
+        <div>
+            <span>DISPOSITIVOS</span>
+            <strong id="monitor-dispositivos">24</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">📡</div>
+        <div>
+            <span>CONEXÃO</span>
+            <strong class="online">ESTÁVEL</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div>
+            <span>ATIVIDADE</span>
+            <strong id="atividade">NORMAL</strong>
+        </div>
+    </div>
+
+</div>
+
+<div class="content-grid">
+
+    <div class="panel">
+
+        <div class="panel-header">
+            <h3>🖥️ Dispositivos</h3>
+            <span class="badge online">ONLINE</span>
+        </div>
+
+        <div class="monitor-status">
+
+            <div class="big-status">
+                <span class="status-dot"></span>
+                24 dispositivos monitorados
+            </div>
+
+            <p>
+                Todos os dispositivos autorizados
+                estão sendo acompanhados pelo NEXUS.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="panel-header">
+            <h3>📡 Conectividade</h3>
+            <span class="badge online">ESTÁVEL</span>
+        </div>
+
+        <div class="monitor-status">
+
+            <div class="big-status">
+                <span class="status-dot"></span>
+                Conexão operacional
+            </div>
+
+            <p>
+                Comunicação com os sistemas
+                monitorados funcionando normalmente.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>⚡ Atividade do sistema</h3>
+        <span class="badge">AO VIVO</span>
+    </div>
+
+    <div class="event">
+        <span class="event-time">AGORA</span>
+        <span>Monitoramento executando</span>
+        <span class="event-ok">NORMAL</span>
+    </div>
+
+    <div class="event">
+        <span class="event-time">AGORA</span>
+        <span>Comunicação verificada</span>
+        <span class="event-ok">NORMAL</span>
+    </div>
+
+    <div class="event">
+        <span class="event-time">AGORA</span>
+        <span>Sistemas analisados</span>
+        <span class="event-ok">NORMAL</span>
+    </div>
+
+</div>
+
+</section>
+<!-- DISPOSITIVOS --><section id="dispositivos" class="page"><div class="page-header">
+    <div>
+        <h2>🖥️ Dispositivos</h2>
+        <p>Dispositivos autorizados cadastrados no NEXUS.</p>
+    </div>
+
+    <div class="badge online">● MONITORAMENTO ATIVO</div>
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">🖥️</div>
+        <div>
+            <span>TOTAL</span>
+            <strong id="dispositivos-total">24</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🟢</div>
+        <div>
+            <span>ONLINE</span>
+            <strong id="dispositivos-online" class="online">22</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🔴</div>
+        <div>
+            <span>OFFLINE</span>
+            <strong id="dispositivos-offline" class="warning">2</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">📡</div>
+        <div>
+            <span>CONEXÃO</span>
+            <strong class="online">ESTÁVEL</strong>
+        </div>
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>🖥️ Dispositivos monitorados</h3>
+        <span class="badge">AO VIVO</span>
+    </div>
+
+    <div id="lista-dispositivos">
+
+        <div class="event">
+            <span>💻 NEXUS-SERVER-01</span>
+            <span class="event-ok">ONLINE</span>
+            <span>192.168.1.10</span>
+        </div>
+
+        <div class="event">
+            <span>💻 NEXUS-SERVER-02</span>
+            <span class="event-ok">ONLINE</span>
+            <span>192.168.1.11</span>
+        </div>
+
+        <div class="event">
+            <span>🖥️ NEXUS-PC-01</span>
+            <span class="event-ok">ONLINE</span>
+            <span>192.168.1.20</span>
+        </div>
+
+        <div class="event">
+            <span>🖥️ NEXUS-PC-02</span>
+            <span class="event-warning">OFFLINE</span>
+            <span>192.168.1.21</span>
+        </div>
+
+        <div class="event">
+            <span>📱 NEXUS-MOBILE-01</span>
+            <span class="event-ok">ONLINE</span>
+            <span>192.168.1.30</span>
+        </div>
+
+        <div class="event">
+            <span>📡 NEXUS-NETWORK-01</span>
+            <span class="event-warning">OFFLINE</span>
+            <span>192.168.1.40</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>🔄 Verificação</h3>
+        <span class="badge online">AUTOMÁTICA</span>
+    </div>
+
+    <div class="monitor-status">
+
+        <div class="big-status">
+            <span class="status-dot"></span>
+            Monitoramento ativo
+        </div>
+
+        <p id="ultima-verificacao">
+            Última verificação: agora
+        </p>
+
+    </div>
+
+</div>
+
+</section><!-- CENTRAL DE ALERTAS --><section id="alertas" class="page"><div class="page-header">
+
+    <div>
+        <h2>🚨 Central de Alertas</h2>
+        <p>Monitoramento e gerenciamento de alertas do NEXUS.</p>
+    </div>
+
+    <div class="badge warning" id="badge-alertas">
+        3 ALERTAS ATIVOS
+    </div>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">🚨</div>
+        <div>
+            <span>ATIVOS</span>
+            <strong id="alertas-ativos" class="warning">3</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🔴</div>
+        <div>
+            <span>ALTO RISCO</span>
+            <strong id="alertas-altos">1</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🟠</div>
+        <div>
+            <span>MÉDIO RISCO</span>
+            <strong id="alertas-medios">1</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🟢</div>
+        <div>
+            <span>BAIXO RISCO</span>
+            <strong id="alertas-baixos">1</strong>
+        </div>
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>🚨 Alertas ativos</h3>
+        <span class="badge">AO VIVO</span>
+    </div>
+
+    <div id="lista-alertas">
+
+        <div class="event">
+            <span class="alert-level high">ALTO</span>
+            <span>Atividade suspeita detectada</span>
+            <button onclick="resolverAlerta(this)" class="alert-button">
+                RESOLVER
+            </button>
+        </div>
+
+        <div class="event">
+            <span class="alert-level medium">MÉDIO</span>
+            <span>Dispositivo sem comunicação</span>
+            <button onclick="resolverAlerta(this)" class="alert-button">
+                RESOLVER
+            </button>
+        </div>
+
+        <div class="event">
+            <span class="alert-level low">BAIXO</span>
+            <span>Configuração alterada</span>
+            <button onclick="resolverAlerta(this)" class="alert-button">
+                RESOLVER
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>🛡️ Status da segurança</h3>
+        <span class="badge online">MONITORANDO</span>
+    </div>
+
+    <div class="monitor-status">
+
+        <div class="big-status">
+            <span class="status-dot"></span>
+            Sistema de alertas operacional
+        </div>
+
+        <p>
+            O NEXUS está verificando continuamente
+            os sistemas autorizados.
+        </p>
+
+    </div>
+
+</div>
+
+</section><!-- EVENTOS --><section id="eventos" class="page"><div class="page-header">
+
+    <div>
+        <h2>📋 Eventos</h2>
+        <p>Histórico de atividades registradas pelo NEXUS.</p>
+    </div>
+
+    <div class="badge online">AO VIVO</div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>📋 Histórico de eventos</h3>
+        <span class="badge">REGISTROS</span>
+    </div>
+
+    <div id="historico-eventos">
+
+        <div class="event">
+            <span class="event-time">AGORA</span>
+            <span>Sistema iniciado</span>
+            <span class="event-ok">NORMAL</span>
+        </div>
+
+        <div class="event">
+            <span class="event-time">AGORA</span>
+            <span>Monitoramento executado</span>
+            <span class="event-ok">NORMAL</span>
+        </div>
+
+        <div class="event">
+            <span class="event-time">AGORA</span>
+            <span>Dispositivo analisado</span>
+            <span class="event-ok">NORMAL</span>
+        </div>
+
+        <div class="event">
+            <span class="event-time">AGORA</span>
+            <span>Alerta registrado</span>
+            <span class="event-warning">ATENÇÃO</span>
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- NEXUS AI --><!-- NEXUS AI --> <section id="ia" class="page">
+<div class="page-header">
+
+    <div>
+        <h2>🤖 NEXUS AI</h2>
+        <p>Centro de inteligência e análise do sistema.</p>
+    </div>
+
+    <div class="badge online">
+        ● IA ONLINE
+    </div>
+
+</div>
+
+
+<!-- ÁREA PRINCIPAL DA IA -->
+
+<div class="ai-layout">
+
+
+    <!-- CHAT -->
+
+    <div class="panel ai-chat-panel">
+
+        <div class="panel-header">
+
+            <h3>🤖 Assistente NEXUS</h3>
+
+            <span class="badge online">
+                OPERACIONAL
+            </span>
+
+        </div>
+
+
+        <div id="ai-chat" class="ai-chat">
+
+            <div class="ai-message">
+
+                <div class="ai-avatar">
+                    🤖
+                </div>
+
+                <div class="ai-bubble">
+
+                    <strong>NEXUS AI</strong>
+
+                    <p>
+                        Olá. Sou a inteligência artificial
+                        do NEXUS Security.
+                    </p>
+
+                    <p>
+                        Posso analisar alertas,
+                        dispositivos, eventos e
+                        o estado de segurança do sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-input-area">
+
+            <input
+                type="text"
+                id="ai-input"
+                placeholder="Digite uma pergunta para o NEXUS AI..."
+                autocomplete="off"
+            >
+
+            <button onclick="enviarMensagemIA()">
+                ENVIAR
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAINEL DE ANÁLISE -->
+
+    <div class="panel ai-analysis">
+
+        <div class="panel-header">
+
+            <h3>🧠 Inteligência do sistema</h3>
+
+            <span class="badge">
+                ANÁLISE
+            </span>
+
+        </div>
+
+
+        <div class="ai-status-card">
+
+            <span class="status-dot"></span>
+
+            <div>
+
+                <strong>IA OPERACIONAL</strong>
+
+                <p>
+                    Analisando dados do NEXUS.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ai-metric">
+
+            <span>🖥️ Dispositivos</span>
+
+            <strong id="ai-dispositivos">
+                24
+            </strong>
+
+        </div>
+
+
+        <div class="ai-metric">
+
+            <span>🚨 Alertas ativos</span>
+
+            <strong id="ai-alertas">
+                3
+            </strong>
+
+        </div>
+
+
+        <div class="ai-metric">
+
+            <span>📋 Eventos analisados</span>
+
+            <strong id="ai-eventos">
+                127
+            </strong>
+
+        </div>
+
+
+        <div class="ai-metric">
+
+            <span>🛡️ Nível de segurança</span>
+
+            <strong class="online">
+                NORMAL
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AÇÕES RÁPIDAS -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <h3>⚡ Análises rápidas</h3>
+
+        <span class="badge">
+            NEXUS AI
+        </span>
+
+    </div>
+
+
+    <div class="ai-actions">
+
+        <button onclick="perguntarIA('Analise os alertas atuais.')">
+            🚨 Analisar alertas
+        </button>
+
+        <button onclick="perguntarIA('Analise os dispositivos do sistema.')">
+            🖥️ Analisar dispositivos
+        </button>
+
+        <button onclick="perguntarIA('Faça um resumo da segurança.')">
+            🛡️ Resumo de segurança
+        </button>
+
+        <button onclick="perguntarIA('Analise os eventos recentes.')">
+            📋 Analisar eventos
+        </button>
+
+    </div>
+
+</div>
+
+</section><!-- RELATÓRIOS --><section id="relatorios" class="page"><div class="page-header">
+
+    <div>
+        <h2>📊 Relatórios</h2>
+        <p>Relatórios e indicadores do sistema.</p>
+    </div>
+
+    <div class="badge online">DISPONÍVEL</div>
+
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div>
+            <span>EVENTOS</span>
+            <strong>127</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🚨</div>
+        <div>
+            <span>ALERTAS</span>
+            <strong>3</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🖥️</div>
+        <div>
+            <span>DISPOSITIVOS</span>
+            <strong>24</strong>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div>
+            <span>STATUS</span>
+            <strong class="online">ONLINE</strong>
+        </div>
+    </div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>📊 Resumo de segurança</h3>
+        <span class="badge">ATUAL</span>
+    </div>
+
+    <div class="monitor-status">
+
+        <div class="big-status">
+            <span class="status-dot"></span>
+            Sistema operando normalmente
+        </div>
+
+        <p>
+            Os dados apresentados são simulados
+            nesta versão inicial do NEXUS.
+        </p>
+
+    </div>
+
+</div>
+
+</section><!-- USUÁRIOS --><section id="usuarios" class="page"><div class="page-header">
+
+    <div>
+        <h2>👥 Usuários</h2>
+        <p>Gerenciamento dos usuários do sistema.</p>
+    </div>
+
+    <div class="badge online">SISTEMA SEGURO</div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>👥 Usuários cadastrados</h3>
+        <span class="badge">3 USUÁRIOS</span>
+    </div>
+
+    <div class="event">
+        <span>👤 Administrador</span>
+        <span class="event-ok">ATIVO</span>
+        <span>ADMIN</span>
+    </div>
+
+    <div class="event">
+        <span>👤 Operador</span>
+        <span class="event-ok">ATIVO</span>
+        <span>OPERADOR</span>
+    </div>
+
+    <div class="event">
+        <span>👤 Auditor</span>
+        <span class="event-ok">ATIVO</span>
+        <span>AUDITOR</span>
+    </div>
+
+</div>
+
+</section><!-- CONFIGURAÇÕES --><section id="configuracoes" class="page"><div class="page-header">
+
+    <div>
+        <h2>⚙️ Configurações</h2>
+        <p>Configurações gerais do NEXUS Security.</p>
+    </div>
+
+    <div class="badge online">SISTEMA ONLINE</div>
+
+</div>
+
+<div class="panel">
+
+    <div class="panel-header">
+        <h3>⚙️ Sistema</h3>
+        <span class="badge online">ATIVO</span>
+    </div>
+
+    <div class="event">
+        <span>Monitoramento automático</span>
+        <span class="event-ok">ATIVADO</span>
+    </div>
+
+    <div class="event">
+        <span>Registro de eventos</span>
+        <span class="event-ok">ATIVADO</span>
+    </div>
+
+    <div class="event">
+        <span>Central de alertas</span>
+        <span class="event-ok">ATIVADA</span>
+    </div>
+
+    <div class="event">
+        <span>Modo de segurança</span>
+        <span class="event-ok">ATIVO</span>
+    </div>
+
+</div>
+
+</section></main></div><script>
+
+/* NAVEGAÇÃO */
+
+function mostrarPagina(pagina) {
+
+    const paginas = document.querySelectorAll(".page");
+
+    paginas.forEach(function(item) {
+        item.classList.remove("active");
+    });
+
+    const selecionada = document.getElementById(pagina);
+
+    if (selecionada) {
+        selecionada.classList.add("active");
+    }
+
+}
+
+
+/* RELÓGIO */
+
+function atualizarRelogio() {
+
+    const agora = new Date();
+
+    const horas = String(agora.getHours()).padStart(2, "0");
+    const minutos = String(agora.getMinutes()).padStart(2, "0");
+    const segundos = String(agora.getSeconds()).padStart(2, "0");
+
+    const clock = document.getElementById("clock");
+
+    if (clock) {
+        clock.textContent =
+            horas + ":" +
+            minutos + ":" +
+            segundos;
+    }
+
+}
+
+atualizarRelogio();
+
+setInterval(atualizarRelogio, 1000);
+
+
+/* EVENTOS */
+
+let eventos = 127;
+
+const tiposDeEventos = [
+
+    {
+        texto: "Dispositivo conectado",
+        classe: "event-ok",
+        status: "NORMAL"
+    },
+
+    {
+        texto: "Sistema analisado",
+        classe: "event-ok",
+        status: "NORMAL"
+    },
+
+    {
+        texto: "Atividade detectada",
+        classe: "event-warning",
+        status: "ATENÇÃO"
+    },
+
+    {
+        texto: "Configuração alterada",
+        classe: "event-warning",
+        status: "ATENÇÃO"
+    },
+
+    {
+        texto: "Verificação de segurança concluída",
+        classe: "event-ok",
+        status: "NORMAL"
+    }
+
+];
+
+
+function criarEvento() {
+
+    const lista = document.getElementById("lista-eventos");
+
+    if (!lista) return;
+
+    const evento =
+        tiposDeEventos[
+            Math.floor(Math.random() * tiposDeEventos.length)
+        ];
+
+    const agora = new Date();
+
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
+
+    const novoEvento = document.createElement("div");
+
+    novoEvento.className = "event";
+
+    novoEvento.innerHTML = `
+
+        <span class="event-time">
+            ${hora}:${minuto}
+        </span>
+
+        <span>
+            ${evento.texto}
+        </span>
+
+        <span class="${evento.classe}">
+            ${evento.status}
+        </span>
+
+    `;
+
+    lista.prepend(novoEvento);
+
+    while (lista.children.length > 5) {
+        lista.removeChild(lista.lastElementChild);
+    }
+
+}
+
+
+/* CONTADOR DE EVENTOS */
+
+function atualizarContadorEventos() {
+
+    eventos++;
+
+    const contador =
+        document.getElementById("eventos-contador");
+
+    if (contador) {
+        contador.textContent = eventos;
+    }
+
+    criarEvento();
+
+}
+
+setInterval(atualizarContadorEventos, 5000);
+
+
+/* ALERTAS */
+
+let alertasAtivos = 3;
+
+
+function atualizarAlertas() {
+
+    const ativos =
+        document.getElementById("alertas-ativos");
+
+    const dashboard =
+        document.getElementById("dashboard-alertas");
+
+    const badge =
+        document.getElementById("badge-alertas");
+
+    const dashboardBadge =
+        document.getElementById("dashboard-badge-alertas");
+
+    if (ativos) {
+        ativos.textContent = alertasAtivos;
+    }
+
+    if (dashboard) {
+        dashboard.textContent = alertasAtivos;
+    }
+
+    if (badge) {
+        badge.textContent =
+            alertasAtivos + " ALERTAS ATIVOS";
+    }
+
+    if (dashboardBadge) {
+        dashboardBadge.textContent =
+            alertasAtivos + " ATIVOS";
+    }
+
+}
+
+
+function resolverAlerta(botao) {
+
+    const evento = botao.parentElement;
+
+    if (evento) {
+        evento.remove();
+    }
+
+    if (alertasAtivos > 0) {
+        alertasAtivos--;
+    }
+
+    atualizarAlertas();
+
+}
+
+atualizarAlertas();
+
+
+/* VERIFICAÇÃO */
+
+function atualizarVerificacao() {
+
+    const elemento =
+        document.getElementById("ultima-verificacao");
+
+    if (!elemento) return;
+
+    const agora = new Date();
+
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
+    const segundo = String(agora.getSeconds()).padStart(2, "0");
+
+    elemento.textContent =
+        "Última verificação: " +
+        hora + ":" +
+        minuto + ":" +
+        segundo;
+
+}
+
+setInterval(atualizarVerificacao, 1000);
+
+
+/* INICIALIZAÇÃO */
+
+criarEvento();
+
+
+function adicionarMensagemIA(texto, tipo = "ia") {
+
+const chat = document.getElementById("ai-chat");
+
+if (!chat) return;
+
+const mensagem = document.createElement("div");
+
+if (tipo === "usuario") {
+
+    mensagem.className = "user-message";
+
+    mensagem.innerHTML = `
+        <div class="user-bubble">
+            ${texto}
+        </div>
+    `;
+
+} else {
+
+    mensagem.className = "ai-message";
+
+    mensagem.innerHTML = `
+        <div class="ai-avatar">
+            🤖
+        </div>
+
+        <div class="ai-bubble">
+            <strong>NEXUS AI</strong>
+            <p>${texto}</p>
+        </div>
+    `;
+
+}
+
+chat.appendChild(mensagem);
+
+chat.scrollTop = chat.scrollHeight;
+
+
+}
+
+/* ============================= */
+/* CÉREBRO NEXUS AI              */
+/* ============================= */
+
+const nexusCerebro = {
+
+    sistema: {
+        status: "ONLINE",
+        nivelSeguranca: "NORMAL"
+    },
+
+    dispositivos: {
+        total: 24,
+        online: 22,
+        offline: 2
+    },
+    listaDispositivos: [
+
+        {
+            nome: "NEXUS-SERVER-01",
+            status: "ONLINE",
+            ip: "192.168.1.10"
+        },
+
+        {
+            nome: "NEXUS-SERVER-02",
+            status: "ONLINE",
+            ip: "192.168.1.11"
+        },
+
+        {
+            nome: "NEXUS-PC-01",
+            status: "ONLINE",
+            ip: "192.168.1.20"
+        },
+
+        {
+            nome: "NEXUS-PC-02",
+            status: "OFFLINE",
+            ip: "192.168.1.21"
+        },
+
+        {
+            nome: "NEXUS-MOBILE-01",
+            status: "ONLINE",
+            ip: "192.168.1.30"
+        },
+
+        {
+            nome: "NEXUS-NETWORK-01",
+            status: "OFFLINE",
+            ip: "192.168.1.40"
+        }
+
+    ]
+
+};
+
+
+
+function responderIA(pergunta) {
+
+const texto = pergunta.toLowerCase();
+
+
+if (
+    texto.includes("alerta") ||
+    texto.includes("alertas")
+) {
+
+    return `
+        Existem atualmente
+        <strong>${alertasAtivos}</strong>
+        alertas ativos no sistema.
+    `;
+
+}
+
+
+if (
+    texto.includes("dispositivo") ||
+    texto.includes("dispositivos")
+) {return `
+    O NEXUS possui
+    <strong>${nexusCerebro.dispositivos.total} dispositivos</strong>.
+
+    <br><br>
+
+    🟢 ${nexusCerebro.dispositivos.online} estão online.
+
+    <br>
+
+    🔴 ${nexusCerebro.dispositivos.offline} estão offline.
+`;
+
+    
+
+}
+
+
+if (
+    texto.includes("evento") ||
+    texto.includes("eventos")
+) {
+
+    return `
+        O sistema registrou
+        <strong>${eventos}</strong>
+        eventos.
+    `;
+
+}
+
+
+if (
+    texto.includes("segurança") ||
+    texto.includes("seguranca") ||
+    texto.includes("resumo")
+) {
+
+    return `
+        🛡️ <strong>Resumo de segurança</strong>
+
+        <br><br>
+
+        Sistema:
+        <strong class="online">ONLINE</strong>
+
+        <br>
+
+        Alertas:
+        <strong>${alertasAtivos}</strong>
+
+        <br>
+
+        Eventos:
+        <strong>${eventos}</strong>
+
+        <br>
+
+        Nível:
+        <strong>NORMAL</strong>
+    `;
+
+}
+
+
+if (
+    texto.includes("oi") ||
+    texto.includes("olá") ||
+    texto.includes("ola")
+) {
+
+    return `
+        Olá. 🤖
+
+        <br><br>
+
+        Sou o NEXUS AI.
+
+        <br><br>
+
+        Posso analisar alertas,
+        dispositivos, eventos
+        e segurança.
+    `;
+
+}
+
+
+return `
+    Não entendi essa solicitação ainda.
+
+    <br><br>
+
+    Tente perguntar:
+
+    <br>
+
+    "Quantos dispositivos estão offline?"
+
+    <br>
+
+    "Quantos alertas existem?"
+
+    <br>
+
+    "Faça um resumo da segurança."
+`;
+
+
+}
+
+function enviarMensagemIA() {
+
+const input =
+    document.getElementById("ai-input");
+
+if (!input) return;
+
+const pergunta =
+    input.value.trim();
+
+if (!pergunta) return;
+
+
+adicionarMensagemIA(
+    pergunta,
+    "usuario"
+);
+
+
+input.value = "";
+
+
+setTimeout(function() {
+
+    const resposta =
+        responderIA(pergunta);
+
+    adicionarMensagemIA(
+        resposta,
+        "ia"
+    );
+
+}, 500);
+
+
+}
+
+function perguntarIA(pergunta) {
+
+const input =
+    document.getElementById("ai-input");
+
+if (!input) return;
+
+input.value = pergunta;
+
+enviarMensagemIA();
+
+
+}
+
+document.addEventListener(
+"keydown",
+function(event) {
+
+    if (
+        event.key === "Enter" &&
+        document.activeElement &&
+        document.activeElement.id === "ai-input"
+    ) {
+
+        enviarMensagemIA();
+
+    }
+
+}
+
+
+);
+
+</script></body>
+</html>
